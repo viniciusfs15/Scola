@@ -6,11 +6,14 @@ namespace Scola
   {
     public PessoaService() : base(new ScolaBaseContext()) { }
 
-    protected override bool BeforeAdd(PessoaEntity entity)
+    protected override bool BeforeAdd(PessoaEntity entity, string message)
     {
       Expression<Func<PessoaEntity, bool>> predicate = x => x.Cpf == entity.Cpf;
-      if(!Repository.Exists(predicate))
+      if (!Repository.Exists(predicate))
+      {
+        message = "CPF ja existe";
         return true;
+      }
       return false;
     }
   }

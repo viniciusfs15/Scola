@@ -1,10 +1,12 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Scola
 {
   public class ScolaBaseEntity : ValidateEntity, ICRUDEntityBase
   {
     [JsonPropertyOrder(0)]
+    [Display(Name = "Código")]
     public int Id { get; set; }
 
     public DateTime CreatedAt { get; set; }

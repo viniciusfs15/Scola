@@ -4,7 +4,7 @@
   {
     public NotaService() : base(new ScolaBaseContext()) { }
 
-    protected override bool BeforeAdd(NotaEntity entity)
+    protected override bool BeforeAdd(NotaEntity entity, string message)
     {
       var alunoService = new AlunoService();
       var turmaDiscService = new TurmaDisciplinaService();
@@ -12,9 +12,12 @@
 
       if(EscolaExists(entity.EscolaId) && 
         alunoService.Exists(entity.AlunoId) && 
-        turmaDiscService.Exists(entity.TurmaDisciplinaId) && 
+        turmaDiscService.Exists(entity.TurmaDisciplinaId) &&
         avaliacaoService.Exists(entity.AvaliacaoId))
+      {
+        message = "Escola, Aluno, TurmaDisciplina ou Avaliacao não existe(m).";
         return true;
+      }
 
       return false;
     }

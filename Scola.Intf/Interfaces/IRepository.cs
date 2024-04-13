@@ -8,7 +8,7 @@
     bool Exists(int id);
     bool Exists(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate);
     TEntity Get(int id);
-    PagedView<TEntity> GetAll(Filter filter, int page, int pageSize);
+    PagedView<TEntity> GetAll(int page, int pageSize, DateTime CreatedAt, DateTime UpdatedAt);
     bool Update(TEntity entity);
   }
 }

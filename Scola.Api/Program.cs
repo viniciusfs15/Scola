@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Scola;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,10 +8,7 @@ builder.Services.AddDbContext<DbContext>(options =>
             x => x.MigrationsAssembly("Scola.DBContext"));
 });
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -45,4 +41,9 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+
+
+var port = builder.Configuration.GetSection("AppSettings")["Port"] ?? "7123";
+app.Run($"http://localhost:{port}");
+
+//app.Run();

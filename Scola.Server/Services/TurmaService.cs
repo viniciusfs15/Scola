@@ -4,10 +4,15 @@
   {
     public TurmaService() : base(new ScolaBaseContext()) { }
 
-    protected override bool BeforeAdd(TurmaEntity entity)
+    protected override bool BeforeAdd(TurmaEntity entity, string message)
     {
       var periodoLetivoService = new PeriodoLetivoService();
-      return EscolaExists(entity.EscolaId) && periodoLetivoService.Exists(entity.PeriodoLetivoId);
+      if (EscolaExists(entity.EscolaId) && periodoLetivoService.Exists(entity.PeriodoLetivoId))
+      {
+        message = "Escola ou PeriodoLetivo não existe(m).";
+        return true;
+      }
+      return false;
     }
   }
 }

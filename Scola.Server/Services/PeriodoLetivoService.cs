@@ -4,7 +4,7 @@
   {
     public PeriodoLetivoService() : base(new ScolaBaseContext()) { }
 
-    protected override bool BeforeAdd(PeriodoLetivoEntity entity)
+    protected override bool BeforeAdd(PeriodoLetivoEntity entity, string message)
     {
       return EscolaExists(entity.EscolaId);
     }
