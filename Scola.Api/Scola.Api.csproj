@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
     <RootNamespace>Scola</RootNamespace>
-    <BaseOutputPath>D:\Projetos\Scola\Scola.Api\bin</BaseOutputPath>
+    <BaseOutputPath>\bin</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>

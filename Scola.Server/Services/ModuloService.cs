@@ -4,7 +4,7 @@
   {
     public ModuloService() : base(new ScolaBaseContext()) { }
 
-    protected override bool BeforeAdd(ModuloEntity entity)
+    protected override bool BeforeAdd(ModuloEntity entity, string message)
     {
       return EscolaExists(entity.EscolaId);
     }

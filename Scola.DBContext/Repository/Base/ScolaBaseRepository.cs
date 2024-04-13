@@ -55,36 +55,14 @@ namespace Scola
       return false;
     }
 
-    public PagedView<TEntity> GetAll(Filter filter, int page, int pageSize)
+    public PagedView<TEntity> GetAll(int page, int pageSize, DateTime CreatedAt, DateTime UpdatedAt)
     {
-      return new PagedView<TEntity>(GetFilltered(filter), DbSet.Count(), page, pageSize);
+      return new PagedView<TEntity>(GetFilltered(CreatedAt, UpdatedAt), DbSet.Count(), page, pageSize);
     }
 
-    public IEnumerable<TEntity> GetFilltered(Filter filter)
+    public IEnumerable<TEntity> GetFilltered(DateTime CreatedAt, DateTime UpdatedAt)
     {
-      IQueryable<TEntity> query = Context.Set<TEntity>();
-
-      foreach (var filterEntry in filter.Filters)
-      {
-        if (filterEntry.Value == null)
-          continue;
-
-        string key = filterEntry.Key;
-        object? value = filterEntry.Value;
-
-        // Construir a expressão lambda para filtrar os resultados com base no filtro
-        ParameterExpression parameter = Expression.Parameter(typeof(TEntity));
-        MemberExpression property = Expression.Property(parameter, key);
-        ConstantExpression constant = Expression.Constant(value);
-        BinaryExpression equal = Expression.Equal(property, constant);
-        Expression<Func<TEntity, bool>> lambda = Expression.Lambda<Func<TEntity, bool>>(equal, parameter);
-
-        // Aplicar o filtro à consulta
-        query = query.Where(lambda);
-      }
-
-      // Executar a consulta e retornar os resultados
-      return query.ToList();
+      return DbSet.Where(x => x.CreatedAt >= CreatedAt || x.ModifiedAt >= UpdatedAt);
     }
 
     public bool Exists(int id)

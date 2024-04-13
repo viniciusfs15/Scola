@@ -1,7 +1,4 @@
-﻿
-
-
-namespace Scola
+﻿namespace Scola
 {
   public class ScolaBaseService<TEntity> where TEntity : ScolaBaseEntity
   {
@@ -15,9 +12,10 @@ namespace Scola
     public virtual TEntity? Add(TEntity entity)
     {
       entity.Validate();
+      var message = string.Empty;
 
-      if (!BeforeAdd(entity))
-        throw new Exception("Falha ao adicionar o registro");
+      if (!BeforeAdd(entity, message))
+        throw new Exception($"Falha ao adicionar o registro: {message}");
 
       Repository.Add(entity);
       
@@ -27,7 +25,7 @@ namespace Scola
 
     protected virtual void AfterAdd(TEntity entity) { }
 
-    protected virtual bool BeforeAdd(TEntity entity)
+    protected virtual bool BeforeAdd(TEntity entity, string message)
     {
       return true;
     }
@@ -62,9 +60,9 @@ namespace Scola
       return Repository.Exists(id);
     }
 
-    public virtual PagedView<TEntity> GetAll(Filter filter, int page = 1, int pageSize = 10)
+    public virtual PagedView<TEntity> GetAll(int page, int pageSize, DateTime CreatedAt, DateTime UpdatedAt)
     {
-      return Repository.GetAll(filter, page, pageSize);
+      return Repository.GetAll(page, pageSize, CreatedAt, UpdatedAt);
     }
 
     protected bool EscolaExists(int escolaId)

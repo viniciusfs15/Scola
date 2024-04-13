@@ -1,0 +1,25 @@
+﻿@page
+<!-- View Index.cshtml para listar os alunos -->
+@model AlunosModel
+@{
+    ViewData["Title"] = "Alunos";
+}
+<table id="gridAlunos" class="table table-sm table-striped">
+    <thead class="thead-dark">
+        <tr class="d-flex">
+            <th scope="col" class="col-sm-2">Id</th>
+            <th scope="col" class="col-sm-6">PessoaId</th>
+            <th scope="col" class="col-sm-4">EcolaId</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var aluno in Model.Alunos)
+        {
+            <tr class="d-flex">
+                <td class="col-sm-2" scope="row">@aluno.Id</td>
+                <td class="col-sm-6" scope="row">@aluno.PessoaId</td>
+                <td class="col-sm-4" scope="row">@aluno.EscolaId</td>
+            </tr>   
+        }
+    </tbody>
+</table>

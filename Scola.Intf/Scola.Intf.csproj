@@ -5,17 +5,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>Scola</RootNamespace>
-    <BaseOutputPath>D:\Projetos\Scola\Scola.Intf\bin</BaseOutputPath>
+    <BaseOutputPath>\bin</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="bin\**" />
+    <Compile Remove="Extensions\**" />
     <EmbeddedResource Remove="bin\**" />
+    <EmbeddedResource Remove="Extensions\**" />
     <None Remove="bin\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Extensions\" />
+    <None Remove="Extensions\**" />
   </ItemGroup>
 
   <ItemGroup>

@@ -6,13 +6,17 @@ namespace Scola
   {
     public FrequenciaService() : base(new ScolaBaseContext()) { }
 
-    protected override bool BeforeAdd(FrequenciaEntity entity)
+    protected override bool BeforeAdd(FrequenciaEntity entity, string message)
     {
       var alunoService = new AlunoService();
       var turmaDiscService = new TurmaDisciplinaService();
 
       if (EscolaExists(entity.EscolaId) && alunoService.Exists(entity.AlunoId) && turmaDiscService.Exists(entity.TurmaDisciplinaId))
+      {
+        message = "Escola, Aluno ou TurmaDisciplina não existe!";
         return true;
+      }
+        
       return false;
     }
   }

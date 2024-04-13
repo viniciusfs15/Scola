@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scola.Intf", "Scola.Intf\Sc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scola.Api", "Scola.Api\Scola.Api.csproj", "{D26EC915-DADE-4A74-AE2C-12855F880596}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scola.DBContext", "Scola.DBContext\Scola.DBContext.csproj", "{087A9956-91B7-48B4-8D7D-47C4252B8898}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scola.DBContext", "Scola.DBContext\Scola.DBContext.csproj", "{087A9956-91B7-48B4-8D7D-47C4252B8898}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

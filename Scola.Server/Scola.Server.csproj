@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>Scola</RootNamespace>
-    <BaseOutputPath>D:\Projetos\Scola\Scola.Server\bin</BaseOutputPath>
+    <BaseOutputPath>\bin</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>

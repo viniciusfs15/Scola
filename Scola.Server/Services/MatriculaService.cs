@@ -4,7 +4,7 @@
   {
     public MatriculaService() : base(new ScolaBaseContext()) { }
 
-    protected override bool BeforeAdd(MatriculaEntity entity)
+    protected override bool BeforeAdd(MatriculaEntity entity, string message)
     {
       var alunoService = new AlunoService();
       var turmaService = new TurmaService();
@@ -16,7 +16,10 @@
          turmaService.Exists(entity.TurmaId) &&
          professorService.Exists(entity.ProfessorId) &&
          periodoLetivoService.Exists(entity.PeriodoLetivoId))
+      {
+        message = "Escola, Aluno, Turma, Professor ou PeriodoLetivo não existe(m).";
         return true;
+      }       
 
       return false;
     }

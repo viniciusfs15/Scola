@@ -4,7 +4,7 @@
   {
     public AvaliacaoService() : base(new ScolaBaseContext()) { }
 
-    protected override bool BeforeAdd(AvaliacaoEntity entity)
+    protected override bool BeforeAdd(AvaliacaoEntity entity, string message)
     {
       if(EscolaExists(entity.EscolaId))
         return true;
